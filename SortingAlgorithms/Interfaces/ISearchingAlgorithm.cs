@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Interfaces
 {
-    interface ISearchAlgorithm
+    interface ISearchingAlgorithm
     {
         void Search(int[] array);
     }
