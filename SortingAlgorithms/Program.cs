@@ -1,4 +1,4 @@
-﻿using SortingAlgorithms.Algorithms;
+﻿using SortingAlgorithms.Algorithms.Sorting;
 using SortingAlgorithms.Helpers;
 using SortingAlgorithms.Interfaces;
 

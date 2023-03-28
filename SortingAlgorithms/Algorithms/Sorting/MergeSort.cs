@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortingAlgorithms.Algorithms
+namespace SortingAlgorithms.Algorithms.Sorting
 {
     public class MergeSort : ISortingAlgorithm
     {
@@ -16,7 +16,7 @@ namespace SortingAlgorithms.Algorithms
 
         private int[] SortArray(int[] array, int leftIndex, int rightIndex)
         {
-            if(leftIndex < rightIndex)
+            if (leftIndex < rightIndex)
             {
                 int middleIndex = leftIndex + (rightIndex - leftIndex) / 2;
 
@@ -48,7 +48,7 @@ namespace SortingAlgorithms.Algorithms
 
             int j = 0, k = 0, l = leftIndex;
 
-            while(j < leftArrayLength && k < rightArrayLength)
+            while (j < leftArrayLength && k < rightArrayLength)
             {
                 if (leftArray[j] <= rightArray[k])
                 {
@@ -60,12 +60,12 @@ namespace SortingAlgorithms.Algorithms
                 }
             }
 
-            while(j < leftArrayLength)
+            while (j < leftArrayLength)
             {
                 array[l++] = leftArray[j++];
             }
 
-            while(k < rightArrayLength)
+            while (k < rightArrayLength)
             {
                 array[l++] = rightArray[k++];
             }

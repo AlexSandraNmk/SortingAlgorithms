@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortingAlgorithms.Algorithms
+namespace SortingAlgorithms.Algorithms.Sorting
 {
     public class BubbleSort : ISortingAlgorithm
     {
         public void Sort(int[] array)
         {
-            for (int i = 0; i < array.Length; i=0)
+            for (int i = 0; i < array.Length; i = 0)
             {
                 bool swapped = false;
 
