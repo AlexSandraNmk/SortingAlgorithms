@@ -8,6 +8,6 @@ namespace SortingAlgorithms.Interfaces
 {
     interface ISearchingAlgorithm
     {
-        void Search(int[] array);
+        void Search(int[] array, int number);
     }
 }
