@@ -8,11 +8,11 @@ namespace SortingAlgorithms.Helpers
 {
     public static class SortedChecker
     {
-        public static bool IsSorted(int[] arr)
+        public static bool IsSorted<T>(T[] arr) where T : IComparable
         {
             for (int i = 0; i < arr.Length - 1; i++)
             {
-                if (arr[i] > arr[i + 1])
+                if (arr[i].CompareTo(arr[i + 1]) > 0)
                 {
                     return false;
                 }

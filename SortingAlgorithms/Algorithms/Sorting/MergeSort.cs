@@ -9,12 +9,12 @@ namespace SortingAlgorithms.Algorithms.Sorting
 {
     public class MergeSort : ISortingAlgorithm
     {
-        public void Sort(int[] array)
+        public void Sort<T>(T[] array) where T : IComparable
         {
             SortArray(array, 0, array.Length - 1);
         }
 
-        private int[] SortArray(int[] array, int leftIndex, int rightIndex)
+        private T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : IComparable
         {
             if (leftIndex < rightIndex)
             {
@@ -29,12 +29,12 @@ namespace SortingAlgorithms.Algorithms.Sorting
             return array;
         }
 
-        private void MergeArray(int[] array, int leftIndex, int middleIndex, int rightIndex)
+        private void MergeArray<T>(T[] array, int leftIndex, int middleIndex, int rightIndex) where T : IComparable
         {
             int leftArrayLength = middleIndex - leftIndex + 1;
             int rightArrayLength = rightIndex - middleIndex;
-            int[] leftArray = new int[leftArrayLength];
-            int[] rightArray = new int[rightArrayLength];
+            T[] leftArray = new T[leftArrayLength];
+            T[] rightArray = new T[rightArrayLength];
 
             for (int i = 0; i < leftArrayLength; i++)
             {
@@ -50,7 +50,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 
             while (j < leftArrayLength && k < rightArrayLength)
             {
-                if (leftArray[j] <= rightArray[k])
+                if (leftArray[j].CompareTo(rightArray[k]) <- 0)
                 {
                     array[l++] = leftArray[j++];
                 }

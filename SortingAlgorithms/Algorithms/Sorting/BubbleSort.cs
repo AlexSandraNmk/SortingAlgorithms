@@ -9,7 +9,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 {
     public class BubbleSort : ISortingAlgorithm
     {
-        public void Sort(int[] array)
+        public void Sort<T>(T[] array) where T : IComparable
         {
             for (int i = 0; i < array.Length; i = 0)
             {
@@ -17,7 +17,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 
                 for (int j = 1; j < array.Length; j++, i++)
                 {
-                    if (array[i] > array[j])
+                    if (array[i].CompareTo(array[j]) > 0)
                     {
                         (array[j], array[i]) = (array[i], array[j]);
                         swapped = true;

@@ -8,6 +8,6 @@ namespace SortingAlgorithms.Interfaces
 {
     interface ISortingAlgorithm
     {
-        void Sort(int[] array);
+        void Sort<T>(T[] array) where T : IComparable;
     }
 }

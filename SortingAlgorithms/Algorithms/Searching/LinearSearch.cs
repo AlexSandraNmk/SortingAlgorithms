@@ -9,18 +9,18 @@ namespace SortingAlgorithms.Algorithms.Searching
 {
     class LinearSearch : ISearchingAlgorithm
     {
-        public void Search(int[] array, int number)
+        public void Search<T>(T[] array, T item) where T : IComparable
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == number)
+                if (array[i].CompareTo(item) == 0)
                 {
-                    Console.WriteLine($"Number {number} was found at index {i}");
+                    Console.WriteLine($"Item {item} was found at index {i}");
                     return;
                 }
             }
 
-            Console.WriteLine($"Number {number} was not found");
+            Console.WriteLine($"Item {item} was not found");
         }
     }
 }

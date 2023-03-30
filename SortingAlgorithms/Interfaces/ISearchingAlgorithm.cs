@@ -8,6 +8,6 @@ namespace SortingAlgorithms.Interfaces
 {
     interface ISearchingAlgorithm
     {
-        void Search(int[] array, int number);
+        void Search<T>(T[] array, T item) where T : IComparable;
     }
 }
