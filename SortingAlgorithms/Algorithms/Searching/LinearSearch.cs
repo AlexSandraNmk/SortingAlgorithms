@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms.Searching
 {
-    class LinearSearch : ISearchingAlgorithm
+    public sealed class LinearSearch : ISearchingAlgorithm
     {
         public void Search<T>(T[] array, T item) where T : IComparable
         {

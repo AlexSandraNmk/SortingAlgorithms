@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms.Sorting
 {
-    public class MergeSort : ISortingAlgorithm
+    public sealed class MergeSort : ISortingAlgorithm
     {
         public void Sort<T>(T[] array) where T : IComparable
         {

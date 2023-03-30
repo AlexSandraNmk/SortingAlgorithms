@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms.Searching
 {
-    public class BinarySearch : ISearchingAlgorithm
+    public sealed class BinarySearch : ISearchingAlgorithm
     {
         public void Search<T>(T[] array, T item) where T : IComparable
         {
-            if (SortedChecker.IsSorted(array) is false)
+            if (new ArrayValidator<T>(array).IsSorted() is false)
             {
                 ISortingAlgorithm sortingAlgorithm = new MergeSort();
                 sortingAlgorithm.Sort(array);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms.Sorting
 {
-    public class BubbleSort : ISortingAlgorithm
+    public sealed class BubbleSort : ISortingAlgorithm
     {
         public void Sort<T>(T[] array) where T : IComparable
         {

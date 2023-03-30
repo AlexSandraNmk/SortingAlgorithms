@@ -6,8 +6,10 @@ using SortingAlgorithms.Interfaces;
 ISortingAlgorithm[] sortingAlgorithms = { new BubbleSort(), new MergeSort() };
 ISearchingAlgorithm[] searchingAlgorithms = { new LinearSearch(), new BinarySearch() };
 
-int[] randomArray = ArrayGenerator.GenerateRandomArray(10000);
-int[] sortedArray = ArrayGenerator.GenerateSortedArray(10000);
+ArrayGenerator arrayGenerator = new ArrayGenerator(10000);
+
+int[] randomArray = arrayGenerator.GenerateRandomArray();
+int[] sortedArray = arrayGenerator.GenerateSortedArray();
 var watch = new System.Diagnostics.Stopwatch();
 
 Console.WriteLine("Sortings:");
