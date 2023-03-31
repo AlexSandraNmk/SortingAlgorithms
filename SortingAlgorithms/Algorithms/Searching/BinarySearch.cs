@@ -9,46 +9,60 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms.Searching
 {
-    public class BinarySearch : ISearchingAlgorithm
+    public sealed class BinarySearch : ISearchingAlgorithm 
     {
-        public void Search(int[] array, int number)
+        private readonly ISortingAlgorithm _sortingAlgorithm;
+        private readonly IArrayValidator _arrayValidator;
+
+        /// <summary>
+        /// Initializes a new instance of the BinarySearch class.
+        /// </summary>
+        /// <param name="sortingAlgorithm">Sorting algorithm that will be used for sorting.</param>
+        /// <param name="arrayValidator">Array validator that will validate an array.</param>
+        public BinarySearch(ISortingAlgorithm sortingAlgorithm, IArrayValidator arrayValidator)
         {
-            if (SortedChecker.IsSorted(array) is false)
+            _sortingAlgorithm = sortingAlgorithm;
+            _arrayValidator = arrayValidator;
+        }
+
+        /// <inheritdoc />
+        public void Search<T>(T[] array, T item) where T : IComparable
+        {
+            if (_arrayValidator.IsSorted(array) is false)
             {
-                ISortingAlgorithm sortingAlgorithm = new MergeSort();
-                sortingAlgorithm.Sort(array);
+                _sortingAlgorithm.Sort(array);
             }
 
-            int result = SearchInHalf(array, number, 0, array.Length - 1);
+            int result = SearchInHalf(array, item, 0, array.Length - 1);
 
             if (result == -1)
             {
-                Console.WriteLine($"Number {number} was not found");
+                Console.WriteLine($"Item {item} was not found");
             }
             else
             {
-                Console.WriteLine($"Number {number} was found at index {result}");
+                Console.WriteLine($"Item {item} was found at index {result}");
             }
         }
 
-        private int SearchInHalf(int[] array, int number, int leftIndex, int rightIndex)
+        private int SearchInHalf<T>(T[] array, T item, int leftIndex, int rightIndex) where T : IComparable
         {
             if (leftIndex <= rightIndex)
             {
                 int middleIndex = leftIndex + (rightIndex - leftIndex) / 2;
 
-                if (number == array[middleIndex])
+                if (item.CompareTo(array[middleIndex]) == 0)
                 {
                     return middleIndex;
                 }
 
-                if (number < array[middleIndex])
+                if (item.CompareTo(array[middleIndex]) < 0)
                 {
-                    return SearchInHalf(array, number, leftIndex, middleIndex - 1);
+                    return SearchInHalf(array, item, leftIndex, middleIndex - 1);
                 }
                 else
                 {
-                    return SearchInHalf(array, number, middleIndex + 1, rightIndex);
+                    return SearchInHalf(array, item, middleIndex + 1, rightIndex);
                 }
             }  
 

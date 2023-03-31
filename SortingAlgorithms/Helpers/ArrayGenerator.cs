@@ -8,13 +8,13 @@ namespace SortingAlgorithms.Helpers
 {
     public static class ArrayGenerator
     {
-        public static int[] GenerateRandomArray(int size)
+        public static int[] GenerateRandomArray(int sizeOfArray)
         {
-            int[] array = new int[size];
+            int[] array = new int[sizeOfArray];
             Random random = new Random();
             int maxNumber = 1000;
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < sizeOfArray; i++)
             {
                 array[i] = random.Next(maxNumber + 1);
             }
@@ -22,11 +22,11 @@ namespace SortingAlgorithms.Helpers
             return array;
         }
 
-        public static int[] GenerateSortedArray(int size)
+        public static int[] GenerateSortedArray(int sizeOfArray)
         {
-            int[] array = new int[size];
+            int[] array = new int[sizeOfArray];
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < sizeOfArray; i++)
             {
                 array[i] = i;
             }
