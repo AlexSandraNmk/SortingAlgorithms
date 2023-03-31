@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SortingAlgorithms.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,34 +7,24 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Helpers
 {
-    public class ArrayValidator<T> where T : IComparable
+    public class ArrayValidator : IArrayValidator
     {
-        private readonly T[] _array;
-
         /// <summary>
-        /// Initializes a new instance of the ArrayValidator class.
+        /// Method checks if the given array sorted or not.
         /// </summary>
-        /// <param name="array">An array that will be validated.</param>
-        public ArrayValidator(T[] array)
+        /// <param name="arr">An array that will be checked.</param>
+        /// <returns>True if the array is sorted, otherwise returns false.</returns>
+        public bool IsSorted<T>(T[] arr) where T : IComparable
         {
-            _array = array;
-        }
-
-        /// <summary>
-        /// Check if the array is sorted.
-        /// </summary>
-        /// <returns>True if array is sorted and false if not.</returns>
-        public bool IsSorted()
-        {
-            for (int i = 0; i < _array.Length - 1; i++)
+            for (int i = 0; i < arr.Length - 1; i++)
             {
-                if (_array[i].CompareTo(_array[i + 1]) > 0)
+                if (arr[i].CompareTo(arr[i + 1]) > 0)
                 {
                     return false;
                 }
             }
 
-           return true;
+            return true;
         }
     }
 }

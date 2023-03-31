@@ -9,6 +9,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 {
     public sealed class BubbleSort : ISortingAlgorithm
     {
+        /// <inheritdoc />
         public void Sort<T>(T[] array) where T : IComparable
         {
             for (int i = 0; i < array.Length; i = 0)

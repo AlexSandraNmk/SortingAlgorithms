@@ -9,14 +9,28 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Algorithms.Searching
 {
-    public sealed class BinarySearch : ISearchingAlgorithm
+    public sealed class BinarySearch : ISearchingAlgorithm 
     {
+        private readonly ISortingAlgorithm _sortingAlgorithm;
+        private readonly IArrayValidator _arrayValidator;
+
+        /// <summary>
+        /// Initializes a new instance of the BinarySearch class.
+        /// </summary>
+        /// <param name="sortingAlgorithm">Sorting algorithm that will be used for sorting.</param>
+        /// <param name="arrayValidator">Array validator that will validate an array.</param>
+        public BinarySearch(ISortingAlgorithm sortingAlgorithm, IArrayValidator arrayValidator)
+        {
+            _sortingAlgorithm = sortingAlgorithm;
+            _arrayValidator = arrayValidator;
+        }
+
+        /// <inheritdoc />
         public void Search<T>(T[] array, T item) where T : IComparable
         {
-            if (new ArrayValidator<T>(array).IsSorted() is false)
+            if (_arrayValidator.IsSorted(array) is false)
             {
-                ISortingAlgorithm sortingAlgorithm = new MergeSort();
-                sortingAlgorithm.Sort(array);
+                _sortingAlgorithm.Sort(array);
             }
 
             int result = SearchInHalf(array, item, 0, array.Length - 1);

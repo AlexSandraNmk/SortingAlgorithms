@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Interfaces
 {
-    interface ISortingAlgorithm
+    public interface ISortingAlgorithm
     {
         /// <summary>
         /// This method sorts an array.

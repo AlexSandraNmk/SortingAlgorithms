@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Helpers
 {
-    public class ArrayGenerator
+    public static class ArrayGenerator
     {
-        private readonly int _sizeOfArray;
-
-        /// <summary>
-        /// Initializes a new instance of the ArrayGenerator class.
-        /// </summary>
-        /// <param name="sizeOfArray">Size of an arrays that will be created by this instance.</param>
-        public ArrayGenerator(int sizeOfArray)
+        public static int[] GenerateRandomArray(int sizeOfArray)
         {
             _sizeOfArray = sizeOfArray;
         }
@@ -29,7 +23,7 @@ namespace SortingAlgorithms.Helpers
             Random random = new Random();
             int maxNumber = 1000;
 
-            for (int i = 0; i < _sizeOfArray; i++)
+            for (int i = 0; i < sizeOfArray; i++)
             {
                 array[i] = random.Next(maxNumber + 1);
             }
@@ -45,7 +39,7 @@ namespace SortingAlgorithms.Helpers
         {
             string[] array = new string[_sizeOfArray];
 
-            for (int i = 0; i < _sizeOfArray; i++)
+            for (int i = 0; i < sizeOfArray; i++)
             {
                 array[i] = GenerateName();
             }
