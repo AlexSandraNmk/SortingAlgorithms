@@ -13,6 +13,7 @@ namespace SortingAlgorithms.UserInteraction
     {
         private readonly object sortLock = new object();
 
+        /// <inheritdoc />
         public async Task ExecuteAsync()
         {
             while (true)
@@ -46,9 +47,14 @@ namespace SortingAlgorithms.UserInteraction
             }
         }
 
+        /// <summary>
+        /// Method creates and runs sorting tasks for different types of arrays (int[], string[], Guid[]).
+        /// </summary>
+        /// <param name="sortingAlgorithm">Algorithm that is used for sorting.</param>
+        /// <param name="arraySize">Size of the sorted arrays.</param>
+        /// <returns>List of Tasks</returns>
         private List<Task> CallSortMethod(ISortingAlgorithm sortingAlgorithm, int arraySize)
         {
-            ArrayGenerator arrayGenerator = new ArrayGenerator(arraySize);
             var tasks = new List<Task>();
 
             Console.Clear();
@@ -58,7 +64,7 @@ namespace SortingAlgorithms.UserInteraction
                 var watch = new System.Diagnostics.Stopwatch();
                 watch.Start();
 
-                var task = Task.Run(() => sortingAlgorithm.Sort(arrayGenerator.GenerateIntArray()));
+                var task = Task.Run(() => sortingAlgorithm.Sort(ArrayGenerator.GenerateIntArray(arraySize)));
                 
                 while(!task.IsCompleted)
                 {
@@ -77,7 +83,7 @@ namespace SortingAlgorithms.UserInteraction
                 var watch = new System.Diagnostics.Stopwatch();
                 watch.Start();
 
-                var task = Task.Run(() => sortingAlgorithm.Sort(arrayGenerator.GenerateStringArray()));
+                var task = Task.Run(() => sortingAlgorithm.Sort(ArrayGenerator.GenerateStringArray(arraySize)));
                 
                 while (!task.IsCompleted)
                 {
@@ -96,7 +102,7 @@ namespace SortingAlgorithms.UserInteraction
                 var watch = new System.Diagnostics.Stopwatch();
                 watch.Start();
                 
-                var task = Task.Run(() => sortingAlgorithm.Sort(arrayGenerator.GenerateGuidArray()));
+                var task = Task.Run(() => sortingAlgorithm.Sort(ArrayGenerator.GenerateGuidArray(arraySize)));
                 
                 while (!task.IsCompleted)
                 {

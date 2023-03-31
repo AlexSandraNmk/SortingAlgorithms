@@ -1,4 +1,5 @@
 ﻿using SortingAlgorithms.Algorithms.Searching;
+using SortingAlgorithms.Algorithms.Sorting;
 using SortingAlgorithms.Helpers;
 using SortingAlgorithms.Interfaces;
 using System;
@@ -13,6 +14,7 @@ namespace SortingAlgorithms.UserInteraction
     {
         private readonly object searchLock = new object();
 
+        /// <inheritdoc />
         public async Task ExecuteAsync()
         {
             while (true)
@@ -33,7 +35,7 @@ namespace SortingAlgorithms.UserInteraction
                         await Task.WhenAll(CallSearchMethod(new LinearSearch(), inputValidator.AskArraySize(), inputValidator.AskSearchedElement()));
                         break;
                     case "2":
-                        await Task.WhenAll(CallSearchMethod(new BinarySearch(), inputValidator.AskArraySize(), inputValidator.AskSearchedElement()));
+                        await Task.WhenAll(CallSearchMethod(new BinarySearch(new MergeSort(), new ArrayValidator()), inputValidator.AskArraySize(), inputValidator.AskSearchedElement()));
                         break;
                     case "b":
                         return;
@@ -47,10 +49,15 @@ namespace SortingAlgorithms.UserInteraction
             }
         }
 
+        /// <summary>
+        /// Method creates and runs searching tasks for different types of arrays (int[], string[], Guid[]).
+        /// </summary>
+        /// <param name="searchingAlgorithm">Algorithm that is used for searching.</param>
+        /// <param name="arraySize">Size of the used arrays.</param>
+        /// <param name="searchedElement">Element that needs to be searched in arrays.</param>
+        /// <returns>List of Tasks</returns>
         private List<Task> CallSearchMethod(ISearchingAlgorithm searchingAlgorithm, int arraySize, string searchedElement)
         {
-            ArrayGenerator arrayGenerator = new ArrayGenerator(arraySize);
-            
             var tasks = new List<Task>();
             Console.Clear();
 
@@ -61,10 +68,9 @@ namespace SortingAlgorithms.UserInteraction
 
                 var task = Task.Run(() =>
                 {
-                    int[] intArray = arrayGenerator.GenerateIntArray();
                     int.TryParse(searchedElement, out int intElement);
 
-                    searchingAlgorithm.Search(intArray, intElement);
+                    searchingAlgorithm.Search(ArrayGenerator.GenerateIntArray(arraySize), intElement);
                 });
 
                 while (!task.IsCompleted)
@@ -84,11 +90,7 @@ namespace SortingAlgorithms.UserInteraction
                 var watch = new System.Diagnostics.Stopwatch();
                 watch.Start();
 
-                var task = Task.Run(() =>
-                {
-                    string[] stringArray = arrayGenerator.GenerateStringArray();
-                    searchingAlgorithm.Search(stringArray, searchedElement);
-                });
+                var task = Task.Run(() => searchingAlgorithm.Search(ArrayGenerator.GenerateStringArray(arraySize), searchedElement));
 
                 while (!task.IsCompleted)
                 {
@@ -109,10 +111,9 @@ namespace SortingAlgorithms.UserInteraction
 
                 var task = Task.Run(() =>
                 {
-                    Guid[] guidArray = arrayGenerator.GenerateGuidArray();
                     Guid.TryParse(searchedElement, out Guid guidElement);
 
-                    searchingAlgorithm.Search(guidArray, guidElement);
+                    searchingAlgorithm.Search(ArrayGenerator.GenerateGuidArray(arraySize), guidElement);
                 });
 
                 while (!task.IsCompleted)

@@ -8,22 +8,18 @@ namespace SortingAlgorithms.Helpers
 {
     public static class ArrayGenerator
     {
-        public static int[] GenerateRandomArray(int sizeOfArray)
-        {
-            _sizeOfArray = sizeOfArray;
-        }
-
         /// <summary>
         /// Create int array of given size.
         /// </summary>
+        /// <param name="sizeofArray">Size of the array that will be created.</param>
         /// <returns>Int array of given size.</returns>
-        public int[] GenerateIntArray()
+        public static int[] GenerateIntArray(int sizeofArray)
         {
-            int[] array = new int[_sizeOfArray];
+            int[] array = new int[sizeofArray];
             Random random = new Random();
             int maxNumber = 1000;
 
-            for (int i = 0; i < sizeOfArray; i++)
+            for (int i = 0; i < sizeofArray; i++)
             {
                 array[i] = random.Next(maxNumber + 1);
             }
@@ -34,12 +30,13 @@ namespace SortingAlgorithms.Helpers
         /// <summary>
         /// Create string array of given size.
         /// </summary>
+        /// <param name="sizeofArray">Size of the array that will be created.</param>
         /// <returns>String array of given size.</returns>
-        public string[] GenerateStringArray()
+        public static string[] GenerateStringArray(int sizeofArray)
         {
-            string[] array = new string[_sizeOfArray];
+            string[] array = new string[sizeofArray];
 
-            for (int i = 0; i < sizeOfArray; i++)
+            for (int i = 0; i < sizeofArray; i++)
             {
                 array[i] = GenerateName();
             }
@@ -49,13 +46,14 @@ namespace SortingAlgorithms.Helpers
 
         /// <summary>
         /// Create Guid array of given size.
-        /// </summary>
+        /// </summary>        
+        /// <param name="sizeofArray">Size of the array that will be created.</param>
         /// <returns>Guid array of given size.</returns>
-        public Guid[] GenerateGuidArray()
+        public static Guid[] GenerateGuidArray(int sizeofArray)
         {
-            Guid[] array = new Guid[_sizeOfArray];
+            Guid[] array = new Guid[sizeofArray];
 
-            for (int i = 0; i < _sizeOfArray; i++)
+            for (int i = 0; i < sizeofArray; i++)
             {
                 array[i] = Guid.NewGuid();
             }
@@ -67,7 +65,7 @@ namespace SortingAlgorithms.Helpers
         /// The method generates name-like string from consonants and vowels.
         /// </summary>
         /// <returns>Name-like string.</returns>
-        private string GenerateName()
+        private static string GenerateName()
         {
             Random random = new Random();
             int length = random.Next(1, 8);

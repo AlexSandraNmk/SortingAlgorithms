@@ -9,11 +9,7 @@ namespace SortingAlgorithms.Helpers
 {
     public class ArrayValidator : IArrayValidator
     {
-        /// <summary>
-        /// Method checks if the given array sorted or not.
-        /// </summary>
-        /// <param name="arr">An array that will be checked.</param>
-        /// <returns>True if the array is sorted, otherwise returns false.</returns>
+        /// <inheritdoc />
         public bool IsSorted<T>(T[] arr) where T : IComparable
         {
             for (int i = 0; i < arr.Length - 1; i++)
