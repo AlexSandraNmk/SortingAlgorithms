@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortingAlgorithms.Interfaces
 {
-    interface ISearchingAlgorithm
+    public interface ISearchingAlgorithm
     {
         /// <summary>
         /// This method searchs an item in given array.
