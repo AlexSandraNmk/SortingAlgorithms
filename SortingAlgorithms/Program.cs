@@ -1,45 +1,29 @@
-﻿using SortingAlgorithms.Algorithms.Searching;
-using SortingAlgorithms.Algorithms.Sorting;
-using SortingAlgorithms.Helpers;
-using SortingAlgorithms.Interfaces;
+﻿using SortingAlgorithms.UserInteraction;
 
-ISortingAlgorithm[] sortingAlgorithms = { new BubbleSort(), new MergeSort() };
-ISearchingAlgorithm[] searchingAlgorithms = { new LinearSearch(), new BinarySearch() };
+bool endApp = false;
 
-ArrayGenerator arrayGenerator = new ArrayGenerator(10000);
-
-int[] randomArray = arrayGenerator.GenerateRandomArray();
-int[] sortedArray = arrayGenerator.GenerateSortedArray();
-var watch = new System.Diagnostics.Stopwatch();
-
-Console.WriteLine("Sortings:");
-
-foreach (var sortingAlgorithm in sortingAlgorithms)
+while (!endApp)
 {
-    watch.Start();
-    sortingAlgorithm.Sort(randomArray);
-    Console.WriteLine($"{sortingAlgorithm.GetType().Name} random: {watch.Elapsed}");
+    Console.Clear();
+    Console.WriteLine("Choose an algorithm type from the following list:");
+    Console.WriteLine("1 - Sorting");
+    Console.WriteLine("2 - Searching");
+    Console.WriteLine("x - Exit");
 
-    watch.Restart();
-    sortingAlgorithm.Sort(sortedArray);
-    Console.WriteLine($"{sortingAlgorithm.GetType().Name} sorted: {watch.Elapsed}");
+    string type = Console.ReadLine();
 
-    watch.Stop();
-    Console.WriteLine();
-}
-
-Console.WriteLine("\nSearchings:");
-
-foreach (var searchingAlgorithm in searchingAlgorithms)
-{
-    watch.Start();
-    searchingAlgorithm.Search(randomArray, 1);
-    Console.WriteLine($"{searchingAlgorithm.GetType().Name} random: {watch.Elapsed}");
-
-    watch.Restart();
-    searchingAlgorithm.Search(sortedArray, 1);
-    Console.WriteLine($"{searchingAlgorithm.GetType().Name} sorted: {watch.Elapsed}");
-
-    watch.Stop();
-    Console.WriteLine();
+    switch (type)
+    {
+        case "1":
+            await new SortingOption().ExecuteAsync();
+            break;
+        case "2":
+            await new SearchingOption().ExecuteAsync();
+            break;
+        case "x":
+            endApp = true;
+            break;
+        default:
+            break;
+    }
 }

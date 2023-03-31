@@ -50,7 +50,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 
             while (j < leftArrayLength && k < rightArrayLength)
             {
-                if (leftArray[j].CompareTo(rightArray[k]) <- 0)
+                if (leftArray[j].CompareTo(rightArray[k]) < 0)
                 {
                     array[l++] = leftArray[j++];
                 }

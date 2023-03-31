@@ -19,6 +19,10 @@ namespace SortingAlgorithms.Helpers
             _array = array;
         }
 
+        /// <summary>
+        /// Check if the array is sorted.
+        /// </summary>
+        /// <returns>True if array is sorted and false if not.</returns>
         public bool IsSorted()
         {
             for (int i = 0; i < _array.Length - 1; i++)
