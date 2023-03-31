@@ -12,14 +12,14 @@ namespace SortingAlgorithms.Algorithms.Searching
     public sealed class BinarySearch : ISearchingAlgorithm 
     {
         private readonly ISortingAlgorithm _sortingAlgorithm;
-        private readonly dynamic _arrayValidator;
+        private readonly IArrayValidator _arrayValidator;
 
         /// <summary>
         /// Initializes a new instance of the BinarySearch class.
         /// </summary>
         /// <param name="sortingAlgorithm">Sorting algorithm that will be used for sorting.</param>
         /// <param name="arrayValidator">Array validator that will validate an array.</param>
-        public BinarySearch(ISortingAlgorithm sortingAlgorithm, dynamic arrayValidator)
+        public BinarySearch(ISortingAlgorithm sortingAlgorithm, IArrayValidator arrayValidator)
         {
             _sortingAlgorithm = sortingAlgorithm;
             _arrayValidator = arrayValidator;
