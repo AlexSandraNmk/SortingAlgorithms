@@ -9,6 +9,7 @@ namespace SortingAlgorithms.Algorithms.Searching
 {
     public sealed class LinearSearch : ISearchingAlgorithm
     {
+        /// <inheritdoc />
         public void Search<T>(T[] array, T item) where T : IComparable
         {
             for (int i = 0; i < array.Length; i++)

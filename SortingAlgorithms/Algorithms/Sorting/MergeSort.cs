@@ -9,6 +9,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 {
     public sealed class MergeSort : ISortingAlgorithm
     {
+        /// <inheritdoc />
         public void Sort<T>(T[] array) where T : IComparable
         {
             SortArray(array, 0, array.Length - 1);

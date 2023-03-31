@@ -11,6 +11,7 @@ namespace SortingAlgorithms.Algorithms.Searching
 {
     public sealed class BinarySearch : ISearchingAlgorithm
     {
+        /// <inheritdoc />
         public void Search<T>(T[] array, T item) where T : IComparable
         {
             if (new ArrayValidator<T>(array).IsSorted() is false)
