@@ -72,21 +72,21 @@ namespace SortingAlgorithms.Helpers
             string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
             string[] vowels = { "a", "e", "i", "o", "u", "ae", "y" };
             
-            string Name = "";
-            Name += consonants[random.Next(consonants.Length)].ToUpper();
-            Name += vowels[random.Next(vowels.Length)];
+            string name = "";
+            name += consonants[random.Next(consonants.Length)].ToUpper();
+            name += vowels[random.Next(vowels.Length)];
 
             int i = 2;
 
             while (i < length)
             {
-                Name += consonants[random.Next(consonants.Length)];
+                name += consonants[random.Next(consonants.Length)];
                 i++;
-                Name += vowels[random.Next(vowels.Length)];
+                name += vowels[random.Next(vowels.Length)];
                 i++;
             }
 
-            return Name;
+            return name;
         }
     }
 }
