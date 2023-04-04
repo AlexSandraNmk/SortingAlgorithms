@@ -15,6 +15,13 @@ namespace SortingAlgorithms.Algorithms.Sorting
             SortArray(array, 0, array.Length - 1);
         }
 
+        /// <summary>
+        /// Recursive method that divide and sort each part of initial array.
+        /// </summary>
+        /// <param name="array">Initial array.</param>
+        /// <param name="leftIndex">The first index of the needed half of array.</param>
+        /// <param name="rightIndex">The last index of the needed half of array.</param>
+        /// <returns>Sorted array.</returns>
         private T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : IComparable
         {
             if (leftIndex < rightIndex)
@@ -30,6 +37,13 @@ namespace SortingAlgorithms.Algorithms.Sorting
             return array;
         }
 
+        /// <summary>
+        /// Merges and sort halves of the initial array. 
+        /// </summary>
+        /// <param name="array">Initial array.</param>
+        /// <param name="leftIndex">The first index of the first half of array.</param>
+        /// <param name="middleIndex">The middle index which is the last index of first half of array and first index of second half of array.</param>
+        /// <param name="rightIndex">The last index of the last half of array.</param>
         private void MergeArray<T>(T[] array, int leftIndex, int middleIndex, int rightIndex) where T : IComparable
         {
             int leftArrayLength = middleIndex - leftIndex + 1;
@@ -51,7 +65,7 @@ namespace SortingAlgorithms.Algorithms.Sorting
 
             while (j < leftArrayLength && k < rightArrayLength)
             {
-                if (leftArray[j].CompareTo(rightArray[k]) <- 0)
+                if (leftArray[j].CompareTo(rightArray[k]) < 0)
                 {
                     array[l++] = leftArray[j++];
                 }

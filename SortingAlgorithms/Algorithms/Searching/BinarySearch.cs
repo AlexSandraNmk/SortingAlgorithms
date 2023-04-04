@@ -45,6 +45,14 @@ namespace SortingAlgorithms.Algorithms.Searching
             }
         }
 
+        /// <summary>
+        /// This method searches item in the given half of the array. 
+        /// </summary>
+        /// <param name="array">The full array in which an item is searched.</param>
+        /// <param name="item">An item that is searched in array.</param>
+        /// <param name="leftIndex">The first index of the needed half of array.</param>
+        /// <param name="rightIndex">The last index of the needed half of array.</param>
+        /// <returns>Index of the found item if it is in the array, otherwise returns -1.</returns>
         private int SearchInHalf<T>(T[] array, T item, int leftIndex, int rightIndex) where T : IComparable
         {
             if (leftIndex <= rightIndex)
