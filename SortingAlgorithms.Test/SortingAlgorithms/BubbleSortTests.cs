@@ -1,4 +1,5 @@
 using SortingAlgorithms.Algorithms.Sorting;
+using SortingAlgorithms.Helpers;
 using SortingAlgorithms.Interfaces;
 
 namespace SortingAlgorithms.Tests.SortingAlgorithms
@@ -34,6 +35,42 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
             bubbleSort.Sort(array);
 
             Assert.Equal(Array.Empty<Guid>(), array);
+        }
+
+        [Fact]
+        public void BubbleSort_InputIsHelperGeneratedIntArray_IntArrayIsSorted()
+        {
+            int[] array = ArrayGenerator.GenerateIntArray(10000);
+            int[] expected = array;
+
+            Array.Sort(expected);
+            bubbleSort.Sort(array);
+
+            Assert.Equal(expected, array);
+        }
+
+        [Fact]
+        public void BubbleSort_InputIsHelperGeneratedStringArray_StringArrayIsSorted()
+        {
+            string[] array = ArrayGenerator.GenerateStringArray(10000);
+            string[] expected = array;
+
+            Array.Sort(expected);
+            bubbleSort.Sort(array);
+
+            Assert.Equal(expected, array);
+        }
+
+        [Fact]
+        public void BubbleSort_InputIsHelperGeneratedGuidArray_GuidArrayIsSorted()
+        {
+            Guid[] array = ArrayGenerator.GenerateGuidArray(10000);
+            Guid[] expected = array;
+
+            Array.Sort(expected);
+            bubbleSort.Sort(array);
+
+            Assert.Equal(expected, array);
         }
 
         [Theory]
