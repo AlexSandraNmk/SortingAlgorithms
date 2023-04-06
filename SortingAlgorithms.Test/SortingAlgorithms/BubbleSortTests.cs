@@ -5,10 +5,10 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
 {
     public class BubbleSortTests
     {
+        private ISortingAlgorithm bubbleSort = new BubbleSort();
         [Fact]
         public void BubbleSort_InputIsEmptyIntArray_IntArrayIsEmpty()
         {
-            ISortingAlgorithm bubbleSort = new BubbleSort();
             int[] array = new int[0];
 
             bubbleSort.Sort(array);
@@ -19,7 +19,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [Fact]
         public void BubbleSort_InputIsEmptyStringArray_StringArrayIsEmpty()
         {
-            ISortingAlgorithm bubbleSort = new BubbleSort();
             string[] array = new string[0];
 
             bubbleSort.Sort(array);
@@ -30,7 +29,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [Fact]
         public void BubbleSort_InputIsEmptyGuidArray_GuidArrayIsEmpty()
         {
-            ISortingAlgorithm bubbleSort = new BubbleSort();
             Guid[] array = new Guid[0];
 
             bubbleSort.Sort(array);
@@ -45,7 +43,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [InlineData(new int[] { 10, -10, 90, -90, 900, -56, 222 })]
         public void BubbleSort_InputIsUnsortedIntArray_IntArrayIsSorted(int[] array)
         {
-            ISortingAlgorithm bubbleSort = new BubbleSort();
             int[] expected = array;
 
             Array.Sort(expected);
@@ -61,7 +58,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [InlineData("alex", "andrew", "george", "Jake", "jake", "Geor", "ANDrew", "Andrew", "ALEX", "GEORGE")]
         public void BubbleSort_InputIsUnsortedStringArray_StringArrayIsSorted(params string[] array)
         {
-            ISortingAlgorithm bubbleSort = new BubbleSort();
             string[] expected = array;
 
             Array.Sort(expected);

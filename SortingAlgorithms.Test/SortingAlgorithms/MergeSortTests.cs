@@ -5,10 +5,11 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
 {
     public class MergeSortTests
     {
+        private ISortingAlgorithm mergeSort = new MergeSort();
+
         [Fact]
         public void MergeSort_InputIsEmptyIntArray_IntArrayIsEmpty()
         {
-            ISortingAlgorithm mergeSort = new MergeSort();
             int[] array = new int[0];
 
             mergeSort.Sort(array);
@@ -19,7 +20,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [Fact]
         public void MergeSort_InputIsEmptyStringArray_StringArrayIsEmpty()
         {
-            ISortingAlgorithm mergeSort = new MergeSort();
             string[] array = new string[0];
 
             mergeSort.Sort(array);
@@ -30,7 +30,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [Fact]
         public void MergeSort_InputIsEmptyGuidArray_GuidArrayIsEmpty()
         {
-            ISortingAlgorithm mergeSort = new MergeSort();
             Guid[] array = new Guid[0];
 
             mergeSort.Sort(array);
@@ -45,7 +44,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [InlineData(new int[] { 10, -10, 90, -90, 900, -56, 222 })]
         public void MergeSort_InputIsUnsortedIntArray_IntArrayIsSorted(int[] array)
         {
-            ISortingAlgorithm mergeSort = new MergeSort();
             int[] expected = array;
 
             Array.Sort(expected);
@@ -61,7 +59,6 @@ namespace SortingAlgorithms.Tests.SortingAlgorithms
         [InlineData("alex", "andrew", "george", "Jake", "jake", "Geor", "ANDrew", "Andrew", "ALEX", "GEORGE")]
         public void MergeSort_InputIsUnsortedStringArray_StringArrayIsSorted(params string[] array)
         {
-            ISortingAlgorithm mergeSort = new MergeSort();
             string[] expected = array;
 
             Array.Sort(expected);

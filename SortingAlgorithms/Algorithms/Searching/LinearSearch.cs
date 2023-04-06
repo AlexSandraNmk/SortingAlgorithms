@@ -10,18 +10,17 @@ namespace SortingAlgorithms.Algorithms.Searching
     public sealed class LinearSearch : ISearchingAlgorithm
     {
         /// <inheritdoc />
-        public void Search<T>(T[] array, T item) where T : IComparable
+        public bool Search<T>(T[] array, T item) where T : IComparable
         {
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i].CompareTo(item) == 0)
                 {
-                    Console.WriteLine($"Item {item} was found at index {i}");
-                    return;
+                    return true;
                 }
             }
 
-            Console.WriteLine($"Item {item} was not found");
+            return false;
         }
     }
 }
