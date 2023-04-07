@@ -7,7 +7,12 @@ namespace SortingAlgorithms.Tests.SearchingAlgorithm
 {
     public class BinarySearchTests
     {
-        private ISearchingAlgorithm binarySearch = new BinarySearch(new MergeSort(), new ArrayValidator());
+        private readonly ISearchingAlgorithm binarySearch;
+
+        public BinarySearchTests()
+        {
+            binarySearch = new BinarySearch(new MergeSort(), new ArrayValidator());
+        }
 
         [Fact]
         public void BinarySearch_InputIsEmptyIntArrayAndZero_ReturnsFalse()
