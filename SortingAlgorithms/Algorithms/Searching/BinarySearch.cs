@@ -26,7 +26,7 @@ namespace SortingAlgorithms.Algorithms.Searching
         }
 
         /// <inheritdoc />
-        public void Search<T>(T[] array, T item) where T : IComparable
+        public bool Search<T>(T[] array, T item) where T : IComparable
         {
             if (_arrayValidator.IsSorted(array) is false)
             {
@@ -37,11 +37,11 @@ namespace SortingAlgorithms.Algorithms.Searching
 
             if (result == -1)
             {
-                Console.WriteLine($"Item {item} was not found");
+                return false;
             }
             else
             {
-                Console.WriteLine($"Item {item} was found at index {result}");
+                return true;
             }
         }
 
